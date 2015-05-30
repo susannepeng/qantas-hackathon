@@ -1,6 +1,7 @@
 Shop = {};
 Shop.pendingOrders = [];
 Shop.fetchGreenStatusInitialised = false;
+Shop.fetchPendingInitialised = false;
 
 //
 
@@ -22,7 +23,7 @@ Shop.fetchProducts = function () {
 Shop.buyProduct = function (productId, isGreen) {
 	console.log(productId, isGreen);
 	var self = this;
-	console.log("user" + User.getId());
+	console.log("user" + Session.get('userId'));
 	HTTP.post('http://qantas.apphb.com/api/user/buy', {
 		data: {
 			UserId: Session.get('userId'),
@@ -35,9 +36,16 @@ Shop.buyProduct = function (productId, isGreen) {
 }
 
 Shop.fetchPending = function () {
-	//if (!User.id) return;
-	HTTP.get('http://qantas.apphb.com/api/user/PendingOrders?id=' + User.getId(), function(err, res){
-		console.log(res);
+	var self = this;
+	if (!self.fetchPendingInitialised) {
+		self.fetchPendingInitialised = true;
+		Meteor.setInterval(self.loopFetchPending, 1000);
+	}
+}
+
+Shop.loopFetchPending = function () {
+	console.log('updating pending');
+	HTTP.get('http://qantas.apphb.com/api/user/PendingOrders?id=' + Session.get('userId'), function(err, res){
 		Session.set('pending', res.data);
 	});
 }

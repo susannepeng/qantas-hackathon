@@ -1,9 +1,10 @@
 <template name="pending">
 	<section id="pending">
-		<h1>{{Defaults.pending.title}}</h1>
 		{{#each pendingOrders}}
 			<div class="order">
-				{{ProductName}} - {{OrderStatus}}
+				<img src="http://placehold.it/100x100" />
+				<h1>{{ProductName}}</h1>
+				<div class="status">{{OrderStatus}}</div>
 			</div>
 		{{/each}}
 	</section>
