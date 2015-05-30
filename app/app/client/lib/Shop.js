@@ -1,6 +1,7 @@
 Shop = {};
 
 Shop.pendingOrders = [];
+Shop.fetchGreenStatusInitialised = false;
 
 //
 
@@ -24,7 +25,7 @@ Shop.buyProduct = function (productId, isGreen) {
 	var self = this;
 	HTTP.post('http://qantas.apphb.com/api/user/buy?UserId=' +
 							User.id + "&ProductId=" + productId +
-							"&IsCarbonNeutral=" + isGreenm function(err, res) {
+							"&IsCarbonNeutral=" + isGreen, function(err, res) {
 								console.log('success');
 							} );
 }
@@ -50,6 +51,14 @@ Shop.getPending = function () {
 
 Shop.fetchGreenStatus = function () {
 	var self = this;
+	if (!self.fetchGreenStatusInitialised) {
+		self.fetchGreenStatusInitialised = true;
+		Meteor.setInterval(self.loopFetchGreenStatus, 5000);
+	}
+}
+
+Shop.loopFetchGreenStatus = function () {
+	console.log('boom');
 	HTTP.get('http://qantas.apphb.com/api/flight/progress', function(error, result) {
 		Session.set('dollarsRemaining', JSON.parse(result.content).DollarsRemaining);
 		Session.set('percentageDonated', JSON.parse(result.content).PercentageDonated);
