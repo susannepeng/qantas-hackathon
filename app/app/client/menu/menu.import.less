@@ -1,0 +1,26 @@
+@import "../less/vars.import.less";
+
+#menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: @menuHeight;
+	border-bottom: 1px solid grey;
+	background: #fdfdfd;
+
+	.logo {
+		text-align: center;
+	}
+
+	.hamburger {
+		@size: 50px;
+
+		width: @size;
+		height: @size;
+		position: absolute;
+		top: 0;
+		right: 0;
+		background: @white;
+	}
+}

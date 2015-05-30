@@ -1,0 +1,17 @@
+<template name="setup">
+	<section id="setup">
+		<h1>{{Defaults.setup.title}}</h1>
+		<div class="with-connectivity">
+			<h2>{{Defaults.setup.subtitle.withConnection}}</h2>
+		</div>
+		<div class="no-connectivity">
+			<h2>{{Defaults.setup.subtitle.noConnection}}</h2>
+			<form>
+				<input class="seat-number" type="text" />
+				<button type="submit" class="button">
+					{{Defaults.setup.submitText}}
+				</button>
+			</form>
+		</div>
+	</section>
+</template>
