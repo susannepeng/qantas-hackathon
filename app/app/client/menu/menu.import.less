@@ -6,8 +6,15 @@
 	left: 0;
 	width: 100%;
 	height: @menuHeight;
-	border-bottom: 1px solid grey;
-	background: #fdfdfd;
+	background: @red;
+
+	svg {
+		height: 100%;
+		width: auto;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
 
 	.logo {
 		text-align: center;
@@ -21,7 +28,13 @@
 		position: absolute;
 		top: 0;
 		right: 0;
-		background: @white;
+
+		svg {
+			width: 50%;
+			margin: 0 auto;
+			display: inherit;
+			position: relative;
+		}
 	}
 
 	.items {

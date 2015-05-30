@@ -1,64 +1,22 @@
 Shop = {};
 
-Shop.products = [];
-Shop.productIdMap = {};
 Shop.pendingOrders = [];
 
-Shop.remainingDollars = 0;
-Shop.percentageCompleted = 0;
+//
 
-Shop.getProducts = function () {
-	return this.products;
-}
+Shop.fetchProducts = function () {
+	var self = this;
+	HTTP.get('http://qantas.apphb.com/api/product/all', function(error, result) {
+		Session.set('products', result);
 
-Shop.getProductsById = function (id) {
-	return this.productIdMap[id];
-}
-
-Shop.fetchProducts = function (products) {
-	this.products = products;
-
-	// Mock
-	this.products = [
-		{
-			Id: 0,
-			Name: 'Coke',
-			Description: 'So tasty',
-			ImageUrl: 'asdlkj',
-			Price: 480,
-			CarbonNeutralPrice: 500,
-			CategoryId: 0,
-			Stock: 79
-		},
-		{
-			Id: 1,
-			Name: 'Juice',
-			Description: 'Hand picked so nice and fresh',
-			ImageUrl: 'asdlkj',
-			Price: 375,
-			CarbonNeutralPrice: 500,
-			CategoryId: 0,
-			Stock: 12
-		},
-		{
-			Id: 2,
-			Name: 'Wine',
-			Description: 'Glass of wine a day keeps doctor away',
-			ImageUrl: 'asdlkj',
-			Price: 845,
-			CarbonNeutralPrice: 900,
-			CategoryId: 0,
-			Stock: 42
+		// Build products Id map
+		var productIdMap = {};
+		for (var i = 0, j = Session.get('products').length; i < j; i++) {
+			var product = this.products[i];
+			productIdMap[product.Id] = product;
 		}
-	];
-
-	// Build products Id map
-	var productIdMap = {};
-	for (var i = 0, j = this.products.length; i < j; i++) {
-		var product = this.products[i];
-		productIdMap[product.Id] = product;
-	}
-	this.productIdMap = productIdMap;
+		Session.set('productIdMap', productIdMap);
+	});
 }
 
 Shop.buyProduct = function (productId, isGreen) {
@@ -85,13 +43,9 @@ Shop.getPending = function () {
 }
 
 Shop.fetchGreenStatus = function () {
-	this.remainingDollars = 283;
-	this.percentageCompleted = 37;
-}
-
-Shop.getRemainingDollars = function () {
-	return this.remainingDollars;
-}
-Shop.getPercentageCompleted = function () {
-	return this.percentageCompleted;
+	var self = this;
+	HTTP.get('http://qantas.apphb.com/api/flight/progress', function(error, result) {
+		Session.set('remainingCents', result.DollarsRemaining);
+		Session.set('percentageDonated', result.PercentageDonated);
+	});
 }

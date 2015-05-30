@@ -1,11 +1,11 @@
 var alertTimeout;
 
 var getItems = function () {
-	return Shop.getProducts();
+	return JSON.parse(Session.get('products').content);
 }
 
 var itemsExist = function () {
-	return Shop.getProducts().length > 0;
+	return JSON.parse(Session.get('products').content).length > 0;
 }
 
 var buyProduct = function (e) {
@@ -32,10 +32,15 @@ var getPercentageCompleted = function () {
 	return Shop.getPercentageCompleted();
 }
 
+var dollarify = function (cents) {
+	return (cents/100).toFixed(2);
+}
+
 Template.shopfront.helpers({
   items: getItems,
   itemsExist: itemsExist,
-  remainingDollars: getRemainingDollars
+  remainingDollars: getRemainingDollars,
+  dollarify: dollarify
 });
 
 Template.shopfront.events({

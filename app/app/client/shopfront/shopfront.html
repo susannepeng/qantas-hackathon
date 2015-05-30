@@ -1,12 +1,20 @@
 <template name="shopfront">
 	<section id="shopfront">
-		<h1>{{Defaults.shopfront.title}}</h1>
-
 		<div id="greenMeter">
 			<div class="bar">
 			</div>
 			<div class="remaining">
-				${{remainingDollars}} remaining until this flight is totally carbon offset!
+				<strong>${{remainingDollars}}</strong> until this flight's carbon emissions are completely offset
+			</div>
+		</div>
+
+		<div id="butlerBar">
+			<div class="shade"></div>
+			<div class="user-greeting">
+				<h1>Hi Jonnie</h1>
+				<h2>We'll be in <span>Arlanda</span> in approx. <span>3 hours</span>.</h2>
+				<div class="qantas-blip"></div>
+				<h3>How can we help you?</h3>
 			</div>
 		</div>
 
@@ -17,13 +25,15 @@
 						<img src="{{ImageUrl}}" />
 						<div class="name">{{Name}}</div>
 						<form class="prices clearfix">
-							<button type="submit" class="original" data-id="{{Id}}" data-green="false">{{Price}}</button>
-							<button type="submit" class="green" data-id="{{Id}}" data-green="true">{{CarbonNeutralPrice}}</button>
+							<button type="submit" class="green" data-id="{{Id}}" data-green="true">
+								${{dollarify CarbonNeutralPriceInCents}}
+								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 2.8 5.2" enable-background="new 0 0 2.8 5.2" xml:space="preserve"><g><path fill="#FF1D25" d="M0,0.5V0l2.5,2.3l0.3,0.3L2.5,2.9L0,5.2V4.7l2.2-2.1L0,0.5z"/></g></svg>
+							</button>
 						</form>
 					</div>
 				{{/each}}
 			{{else}}
-				No items here!
+				Loading
 			{{/if}}
 		</div>
 
