@@ -24,24 +24,15 @@ Shop.buyProduct = function (productId, isGreen) {
 	var self = this;
 	HTTP.post('http://qantas.apphb.com/api/user/buy?UserId=' +
 							User.id + "&ProductId=" + productId +
-							"&IsCarbonNeutral=" + isGreenm function(err, res) {
+							"&IsCarbonNeutral=" + isGreen, function(err, res) {
 								console.log('success');
 							} );
 }
 
 Shop.fetchPending = function () {
-	this.pendingOrders = [
-		{
-			Id: 808,
-			Name: 'Coke',
-			OrderStatus: 1
-		},
-		{
-			Id: 812,
-			Name: 'Wine',
-			OrderStatus: 0
-		}
-	];
+	HTTP.get('http://qantas.apphb.com/api/user/PendingOrders/' + User.id, function(err, res){
+		Session.set('pending', res);
+	});
 }
 
 Shop.getPending = function () {
