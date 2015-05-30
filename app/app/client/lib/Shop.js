@@ -15,9 +15,9 @@ Shop.setProducts = function (products) {
 			Id: 0,
 			Name: 'Coke',
 			Description: 'So tasty',
-			ImageUrl: '',
+			ImageUrl: 'asdlkj',
 			Price: 480,
-			CarbonNeutralPrice: null,
+			CarbonNeutralPrice: 500,
 			CategoryId: 0,
 			Stock: 79
 		},
@@ -25,7 +25,7 @@ Shop.setProducts = function (products) {
 			Id: 1,
 			Name: 'Juice',
 			Description: 'Hand picked so nice and fresh',
-			ImageUrl: '',
+			ImageUrl: 'asdlkj',
 			Price: 375,
 			CarbonNeutralPrice: 500,
 			CategoryId: 0,
@@ -35,11 +35,15 @@ Shop.setProducts = function (products) {
 			Id: 2,
 			Name: 'Wine',
 			Description: 'Glass of wine a day keeps doctor away',
-			ImageUrl: '',
+			ImageUrl: 'asdlkj',
 			Price: 845,
-			CarbonNeutralPrice: null,
+			CarbonNeutralPrice: 900,
 			CategoryId: 0,
 			Stock: 42
 		}
 	];
+}
+
+Shop.buyProduct = function (productId, isGreen) {
+	console.log(productId, isGreen);
 }

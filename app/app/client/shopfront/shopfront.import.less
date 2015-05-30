@@ -1,0 +1,35 @@
+@import "../less/vars.import.less";
+
+#shopfront {
+	@itemSize: 30%;
+	@itemPadding: 10px;
+	@itemMargin: 5%;
+
+	.item {
+		border: 1px solid grey;
+		width: @itemSize;
+		background: @white;
+		padding: @itemPadding;
+		float: left;
+
+		&:nth-child(3n + 2) {
+			margin-left: @itemMargin;
+			margin-right: @itemMargin;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+
+		.name {
+		}
+
+		.prices {
+			> div {
+				float: left;
+				width: 50%;
+			}
+		}
+	}
+}

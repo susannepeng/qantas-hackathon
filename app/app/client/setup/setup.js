@@ -1,6 +1,7 @@
 var bootstrapUser = function () {
-	Router.go('/shopfront');
 	User.setSeat($('.seat-number').val());
+	Shop.setProducts();
+	Router.go('/shopfront');
 }
 
 Template.setup.events({

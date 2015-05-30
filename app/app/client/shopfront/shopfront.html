@@ -2,11 +2,20 @@
 	<section id="shopfront">
 		<h1>{{Defaults.shopfront.title}}</h1>
 
-		<div class="items">
+		<div class="items clearfix">
 			{{#if itemsExist}}
 				{{#each items}}
-					poo
+					<div class="item">
+						<img src="{{ImageUrl}}" />
+						<div class="name">{{Name}}</div>
+						<form class="prices clearfix">
+							<button type="submit" class="original" data-id="{{Id}}" data-green="false">{{Price}}</button>
+							<button type="submit" class="green" data-id="{{Id}}" data-green="true">{{CarbonNeutralPrice}}</button>
+						</form>
+					</div>
 				{{/each}}
+			{{else}}
+				No items here!
 			{{/if}}
 		</div>
 	</section>

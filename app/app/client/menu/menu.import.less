@@ -23,4 +23,39 @@
 		right: 0;
 		background: @white;
 	}
+
+	.items {
+		width: @menuMaxWidth;
+		position: fixed;
+		right: -@menuMaxWidth;
+		top: 0;
+		height: 100%;
+		background: @white;
+		border-left: 1px solid grey;
+		z-index: 1000;
+		transition: all .5s;
+	}
+
+	.shade {
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,.2);
+		position: fixed;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		transition: all .5s;
+	}
+
+	&.open {
+		.items {
+			right: 0;
+		}
+
+		.shade {
+			z-index: 999;
+			opacity: 1;
+		}
+	}
 }
