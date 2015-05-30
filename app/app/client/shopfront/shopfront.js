@@ -5,6 +5,7 @@ var getItems = function () {
 }
 
 var itemsExist = function () {
+	if (!Session.get('products')) return false;
 	return JSON.parse(Session.get('products').content).length > 0;
 }
 
@@ -24,26 +25,64 @@ var buyProduct = function (e) {
 	}, 3000);
 }
 
-var getRemainingDollars = function () {
-	return Shop.getRemainingDollars();
+var selectProduct = function (e) {
+	if ($(e.target).is('button')) return;
+	var product = $(e.target).hasClass('.item') ? $(e.target) : $(e.target).closest('.item');
+
+	var productId = product.data('id');
+	var productName = product.data('name');
+	var productDescription = product.data('description');
+	var productPriceInCents = product.data('price');
+	var productCarbonNeutralPriceInCents = product.data('carbonprice');
+	console.log(productName);
+
+	Session.set('selectedProduct', {
+		Id: productId,
+		Name: productName,
+		Description: productDescription,
+		PriceInCents: productPriceInCents,
+		CarbonNeutralPriceInCents: productCarbonNeutralPriceInCents
+	});
 }
 
-var getPercentageCompleted = function () {
-	return Shop.getPercentageCompleted();
+var getRemainingDollars = function () {
+	return Session.get('dollarsRemaining');
+}
+
+var getPercentageDonated = function () {
+	return Session.get('percentageDonated') === 0 ? 1 : Session.get('percentageDonated');
 }
 
 var dollarify = function (cents) {
 	return (cents/100).toFixed(2);
 }
 
+var getSelectedProduct = function () {
+	return [Session.get('selectedProduct')];
+};
+
+var clearSelectedProduct = function () {
+	Session.set('selectedProduct', null);
+};
+
+var selectedProductExists = function () {
+	return !!Session.get('selectedProduct') ? 'show' : '';
+};
+
 Template.shopfront.helpers({
   items: getItems,
   itemsExist: itemsExist,
   remainingDollars: getRemainingDollars,
-  dollarify: dollarify
+  percentageDonated: getPercentageDonated,
+  dollarify: dollarify,
+  showIfSelectedProductExists: selectedProductExists,
+  selectedProduct: getSelectedProduct
 });
 
 Template.shopfront.events({
 	'submit form': preventDefault,
-	'click button': buyProduct
+	'click .item': selectProduct,
+	'click button': buyProduct,
+	'click #product-info-box .shade': clearSelectedProduct,
+	'click .buy-buttons button': clearSelectedProduct
 });

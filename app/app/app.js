@@ -22,7 +22,6 @@ Router.route('/shopfront', function () {
 });
 Router.route('/shopfront/:id', function () {
 	Shop.fetchProducts();
-	Shop.fetchGreenStatus();
   this.layout('MainLayout');
 	this.render('shopfront');
 	this.render('baseMenu', {to: 'menu'});

@@ -45,7 +45,7 @@ Shop.getPending = function () {
 Shop.fetchGreenStatus = function () {
 	var self = this;
 	HTTP.get('http://qantas.apphb.com/api/flight/progress', function(error, result) {
-		Session.set('remainingCents', result.DollarsRemaining);
-		Session.set('percentageDonated', result.PercentageDonated);
+		Session.set('dollarsRemaining', JSON.parse(result.content).DollarsRemaining);
+		Session.set('percentageDonated', JSON.parse(result.content).PercentageDonated);
 	});
 }

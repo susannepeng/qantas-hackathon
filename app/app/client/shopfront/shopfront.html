@@ -2,6 +2,7 @@
 	<section id="shopfront">
 		<div id="greenMeter">
 			<div class="bar">
+				<div class="filled" style="width: {{percentageDonated}}%"></div>
 			</div>
 			<div class="remaining">
 				<strong>${{remainingDollars}}</strong> until this flight's carbon emissions are completely offset
@@ -21,11 +22,11 @@
 		<div class="items clearfix">
 			{{#if itemsExist}}
 				{{#each items}}
-					<div class="item">
+					<div class="item" data-id="{{Id}}" data-name="{{Name}}" data-description="{{Description}}" data-price="{{PriceInCents}}" data-carbonprice="{{CarbonNeutralPriceInCents}}">
 						<img src="{{ImageUrl}}" />
 						<div class="name">{{Name}}</div>
 						<form class="prices clearfix">
-							<button type="submit" class="green" data-id="{{Id}}" data-green="true">
+							<button type="submit" class="green" data-id="{{Id}}" data-name="{{Name}}" data-description="{{Description}}" data-price="{{PriceInCents}}" data-carbonprice="{{CarbonNeutralPrice}}">
 								${{dollarify CarbonNeutralPriceInCents}}
 								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 2.8 5.2" enable-background="new 0 0 2.8 5.2" xml:space="preserve"><g><path fill="#FF1D25" d="M0,0.5V0l2.5,2.3l0.3,0.3L2.5,2.9L0,5.2V4.7l2.2-2.1L0,0.5z"/></g></svg>
 							</button>
@@ -41,6 +42,27 @@
 			<div class="message">
 				Your order has been placed.
 				<a href="/pending">View my orders</a>
+			</div>
+		</div>
+
+		<div id="product-info-box" class="{{showIfSelectedProductExists}}">
+			<div class="shade"></div>
+			<div class="box">
+				{{#each selectedProduct}}
+					<img src="asd" />
+					<h1>{{Name}}</h1>
+					<div class="description">{{Description}}</div>
+					<form class="buy-buttons">
+						<button type="submit" data-id="{{Id}}">
+							${{dollarify PriceInCents}} I don't want to carbon offset
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 2.8 5.2" enable-background="new 0 0 2.8 5.2" xml:space="preserve"><g><path fill="#FF1D25" d="M0,0.5V0l2.5,2.3l0.3,0.3L2.5,2.9L0,5.2V4.7l2.2-2.1L0,0.5z"/></g></svg>
+						</button>
+						<button type="submit" class="red" data-id="{{Id}}">
+							${{dollarify CarbonNeutralPriceInCents}} Buy now
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 2.8 5.2" enable-background="new 0 0 2.8 5.2" xml:space="preserve"><g><path fill="#FFFFFF" d="M0,0.5V0l2.5,2.3l0.3,0.3L2.5,2.9L0,5.2V4.7l2.2-2.1L0,0.5z"/></g></svg>
+						</button>
+					</form>
+				{{/each}}
 			</div>
 		</div>
 	</section>
