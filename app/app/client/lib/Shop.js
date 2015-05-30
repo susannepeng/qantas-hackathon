@@ -1,6 +1,7 @@
 Shop = {};
 
 Shop.products = [];
+Shop.productIdMap = {};
 Shop.pendingOrders = [];
 
 Shop.remainingDollars = 0;
@@ -8,6 +9,10 @@ Shop.percentageCompleted = 0;
 
 Shop.getProducts = function () {
 	return this.products;
+}
+
+Shop.getProductsById = function (id) {
+	return this.productIdMap[id];
 }
 
 Shop.fetchProducts = function (products) {
@@ -46,6 +51,14 @@ Shop.fetchProducts = function (products) {
 			Stock: 42
 		}
 	];
+
+	// Build products Id map
+	var productIdMap = {};
+	for (var i = 0, j = this.products.length; i < j; i++) {
+		var product = this.products[i];
+		productIdMap[product.Id] = product;
+	}
+	this.productIdMap = productIdMap;
 }
 
 Shop.buyProduct = function (productId, isGreen) {

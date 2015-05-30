@@ -20,6 +20,13 @@ Router.route('/shopfront', function () {
 	this.render('shopfront');
 	this.render('baseMenu', {to: 'menu'});
 });
+Router.route('/shopfront/:id', function () {
+	Shop.fetchProducts();
+	Shop.fetchGreenStatus();
+  this.layout('MainLayout');
+	this.render('shopfront');
+	this.render('baseMenu', {to: 'menu'});
+});
 Router.route('/pending', function () {
 	Shop.fetchPending();
   this.layout('MainLayout');
