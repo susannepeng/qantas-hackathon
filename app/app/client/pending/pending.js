@@ -1,5 +1,8 @@
 var getPendingOrders = function () {
-	return Shop.getPending();
+	Shop.fetchPending();
+	console.log('victory');
+	// console.log(Session.get('pending')[0]);
+	return Session.get('pending')
 }
 
 var getOrderStatus = function (orderStatus) {
@@ -13,4 +16,5 @@ Template.pending.helpers({
 });
 
 Template.pending.events({
+	'load': getPendingOrders
 });
