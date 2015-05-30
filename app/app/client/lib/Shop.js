@@ -25,7 +25,7 @@ Shop.buyProduct = function (productId, isGreen) {
 	var self = this;
 	HTTP.post('http://qantas.apphb.com/api/user/buy', {
 		data: {
-			UserId: User.getId(),
+			UserId: Session.get('userId'),
 			ProductId: productId,
 			IsCarbonNeutral: isGreen
 		}
