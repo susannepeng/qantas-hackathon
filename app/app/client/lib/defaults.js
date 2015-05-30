@@ -5,7 +5,8 @@ Template.registerHelper('Defaults', function() {
 			title: 'Welcome aboard',
 			subtitle: {
 				withConnection: 'Log in with your QANTAS account',
-				noConnection: 'Tell us your seat number'
+				noConnection: 'Tell us your seat number',
+				noConnectionAlternative: 'connect with your Qantas Account'
 			},
 			submitText: 'OK'
 		},

@@ -1,8 +1,14 @@
 #setup {
-	@darkRed: #97141c;
+	@darkRed: #6a0d13;
 
 	text-align: center;
 	color: @white;
+
+	.kangaroo {
+		width: 35px;
+		height: auto;
+		margin-bottom: 30px;
+	}
 
 	.triangle {
 		position: absolute;
@@ -14,7 +20,7 @@
 
 		svg,
 		polygon {
-			fill: #841018;
+			fill: #540b10;
 		}
 	}
 
@@ -35,12 +41,17 @@
 	h2 {
 		font-size: 14px;
 		margin: 20px 0;
+
+		a {
+			display: block;
+			margin-top: 3px;
+			color: @red;
+		}
 	}
 
 	input {
-		font-size: 80px;
-		text-align: center;
-		padding: 10px 10px 16px;
+		font-size: 16px;
+		padding: 10px;
 		font-weight: 300;
 		font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
 		display: inline-block;
@@ -54,8 +65,20 @@
 	}
 
 	.no-connectivity {
-		button {
+		.qantas-blip {
+			background: @red;
+			width: 35px;
+			height: 2px;
+			margin: 15px auto;
+		}
+
+		form {
 			margin-top: 20px;
+		}
+
+		button {
+			width: auto;
+			margin: 0;
 			border: 1px solid @white;
 			background: none;
 			border-radius: 3px;

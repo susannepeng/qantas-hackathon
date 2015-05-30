@@ -49,6 +49,10 @@ var getRemainingDollars = function () {
 	return Session.get('dollarsRemaining');
 }
 
+var offsetAchieved = function () {
+	return getRemainingDollars() === 0;
+}
+
 var getPercentageDonated = function () {
 	return Session.get('percentageDonated') === 0 ? 1 : Session.get('percentageDonated');
 }
@@ -76,7 +80,8 @@ Template.shopfront.helpers({
   percentageDonated: getPercentageDonated,
   dollarify: dollarify,
   showIfSelectedProductExists: selectedProductExists,
-  selectedProduct: getSelectedProduct
+  selectedProduct: getSelectedProduct,
+  offsetAchieved: offsetAchieved
 });
 
 Template.shopfront.events({

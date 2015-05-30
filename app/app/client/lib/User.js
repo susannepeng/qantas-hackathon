@@ -1,20 +1,9 @@
 User = {};
 
-User.id = null;
-User.seat = null;
-
 User.setId = function (id) {
-	this.id = id;
-}
-
-User.getId = function (id) {
-	return this.id;
-}
-
-User.getSeat = function () {
-	return this.seat;
+	Session.set('userId', id);
 }
 
 User.setSeat = function (seat) {
-	this.seat = seat;
+	Session.set('userSeat', {value: seat});
 }

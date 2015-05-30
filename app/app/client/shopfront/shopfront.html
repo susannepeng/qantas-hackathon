@@ -5,7 +5,11 @@
 				<div class="filled" style="width: {{percentageDonated}}%"></div>
 			</div>
 			<div class="remaining">
-				<strong>${{remainingDollars}}</strong> until this flight's carbon emissions are completely offset. <a href="">Find out more &rsaquo;</a>
+				{{#if offsetAchieved}}
+					The carbon offset goal for this flight has been achieved! <a href="">Find out more &rsaquo;</a>
+				{{else}}
+					<strong>${{remainingDollars}}</strong> until this flight's carbon emissions are completely offset. <a href="">Find out more &rsaquo;</a>
+				{{/if}}
 			</div>
 		</div>
 

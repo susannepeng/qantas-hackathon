@@ -1,8 +1,9 @@
 var bootstrapUser = function () {
-	User.setSeat($('.seat-number').val());
+	var seat = $('.seat-number').val();
+	User.setSeat(seat);
 	HTTP.post('http://qantas.apphb.com/api/user/register', {
 		data: {
-			seatNo: User.getSeat()
+			seatNo: Session.get('userSeat').value
 		}
 	}, function (error, result) {
 		console.log(result)

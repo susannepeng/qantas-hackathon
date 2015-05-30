@@ -32,3 +32,8 @@ Router.route('/pending', function () {
 	this.render('pending');
 	this.render('nestedMenu', {to: 'menu'});
 });
+
+Router.onBeforeAction(function () {
+	if (!Session.get('userSeat')) Router.go('/');
+	this.next();
+});
