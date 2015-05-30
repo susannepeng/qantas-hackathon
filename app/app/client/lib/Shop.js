@@ -31,6 +31,7 @@ Shop.buyProduct = function (productId, isGreen) {
 }
 
 Shop.fetchPending = function () {
+	if (!User.id) return;
 	HTTP.get('http://qantas.apphb.com/api/user/PendingOrders/' + User.id, function(err, res){
 		Session.set('pending', res);
 	});

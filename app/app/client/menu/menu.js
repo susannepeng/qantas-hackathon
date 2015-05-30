@@ -8,5 +8,6 @@ var closeMenu = function () {
 
 Template.menu.events({
 	'click .hamburger': openMenu,
-	'click .shade': closeMenu
+	'click .shade': closeMenu,
+	'click a': closeMenu
 });
