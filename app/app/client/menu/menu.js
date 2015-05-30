@@ -15,7 +15,11 @@ Template.menuItems.helpers({
 });
 
 Template.menu.events({
-	'click .hamburger': openMenu,
+	'click .hamburger-hitbox': openMenu,
+	'touch .hamburger-hitbox': openMenu,
+	'touchstart .hamburger-hitbox': openMenu,
 	'click .shade': closeMenu,
+	'touch .shade': closeMenu,
+	'touchstart .shade': closeMenu,
 	'click a': closeMenu
 });
