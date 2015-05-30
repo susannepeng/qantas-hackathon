@@ -1,5 +1,10 @@
 <template name="pending">
 	<section id="pending">
 		<h1>{{Defaults.pending.title}}</h1>
+		{{#each pendingOrders}}
+			<div class="order">
+				{{Name}} - {{getStatus OrderStatus}}
+			</div>
+		{{/each}}
 	</section>
 </template>

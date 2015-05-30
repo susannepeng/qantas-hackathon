@@ -1,12 +1,16 @@
 Shop = {};
 
 Shop.products = [];
+Shop.pendingOrders = [];
+
+Shop.remainingDollars = 0;
+Shop.percentageCompleted = 0;
 
 Shop.getProducts = function () {
 	return this.products;
 }
 
-Shop.setProducts = function (products) {
+Shop.fetchProducts = function (products) {
 	this.products = products;
 
 	// Mock
@@ -46,4 +50,35 @@ Shop.setProducts = function (products) {
 
 Shop.buyProduct = function (productId, isGreen) {
 	console.log(productId, isGreen);
+}
+
+Shop.fetchPending = function () {
+	this.pendingOrders = [
+		{
+			Id: 808,
+			Name: 'Coke',
+			OrderStatus: 1
+		},
+		{
+			Id: 812,
+			Name: 'Wine',
+			OrderStatus: 0
+		}
+	];
+}
+
+Shop.getPending = function () {
+	return this.pendingOrders;
+}
+
+Shop.fetchGreenStatus = function () {
+	this.remainingDollars = 283;
+	this.percentageCompleted = 37;
+}
+
+Shop.getRemainingDollars = function () {
+	return this.remainingDollars;
+}
+Shop.getPercentageCompleted = function () {
+	return this.percentageCompleted;
 }

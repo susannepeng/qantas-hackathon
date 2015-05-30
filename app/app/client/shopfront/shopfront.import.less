@@ -32,4 +32,21 @@
 			}
 		}
 	}
+
+	#buy-result-alert {
+		@buyResultHeight: 70px;
+
+		position: absolute;
+		top: (-@buyResultHeight);
+		left: 0;
+		background: rgba(0,0,0,.7);
+		transition: all .5s;
+		width: 100%;
+		height: @buyResultHeight;
+		color: @white;
+
+		&.show {
+			top: 0;
+		}
+	}
 }

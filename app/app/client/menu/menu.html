@@ -1,9 +1,48 @@
 <template name="menu">
+	{{> yield "menu"}}
+</template>
+
+<template name="menuLogo">
+	<div class="logo">LOGO</div>
+</template>
+
+<template name="menuHamburger">
+	<div class="hamburger">=</div>
+</template>
+
+<template name="menuShade">
+	<div class="shade"></div>
+</template>
+
+<template name="menuItems">
+	<div class="items">
+		<ul>
+			<li><a href="/shopfront">Shop</a></li>
+			<li><a href="/pending">My pending orders</a></li>
+			<li><a href="">Order history</a></li>
+			<li><a href="">Settings</a></li>
+		</ul>
+	</div>
+</template>
+
+
+<template name="baseMenu">
 	<div id="menu">
-		<div class="logo">LOGO</div>
-		<div class="hamburger">=</div>
-		<div class="items">
+		{{> menuLogo}}
+		{{> menuHamburger}}
+		{{> menuItems}}
+		{{> menuShade}}
+	</div>
+</template>
+
+<template name="nestedMenu">
+	<div id="menu">
+		<div class="back">
+			<a href="javascript:history.back()">Back</a>
 		</div>
-		<div class="shade"></div>
+		{{> menuLogo}}
+		{{> menuHamburger}}
+		{{> menuItems}}
+		{{> menuShade}}
 	</div>
 </template>

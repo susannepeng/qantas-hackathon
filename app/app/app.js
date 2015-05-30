@@ -10,10 +10,19 @@ if (Meteor.isServer) {
 }
 
 Router.route('/', function () {
-	  this.layout('MainLayout');
-	  this.render('setup');
+  this.layout('MainLayout');
+  this.render('setup');
 	});
 Router.route('/shopfront', function () {
+	Shop.fetchProducts();
+	Shop.fetchGreenStatus();
   this.layout('MainLayout');
 	this.render('shopfront');
+	this.render('baseMenu', {to: 'menu'});
+});
+Router.route('/pending', function () {
+	Shop.fetchPending();
+  this.layout('MainLayout');
+	this.render('pending');
+	this.render('nestedMenu', {to: 'menu'});
 });

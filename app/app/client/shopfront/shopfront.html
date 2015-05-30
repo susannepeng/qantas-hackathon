@@ -2,6 +2,14 @@
 	<section id="shopfront">
 		<h1>{{Defaults.shopfront.title}}</h1>
 
+		<div id="greenMeter">
+			<div class="bar">
+			</div>
+			<div class="remaining">
+				${{remainingDollars}} remaining until this flight is totally carbon offset!
+			</div>
+		</div>
+
 		<div class="items clearfix">
 			{{#if itemsExist}}
 				{{#each items}}
@@ -17,6 +25,13 @@
 			{{else}}
 				No items here!
 			{{/if}}
+		</div>
+
+		<div id="buy-result-alert">
+			<div class="message">
+				Your order has been placed.
+				<a href="/pending">View my orders</a>
+			</div>
 		</div>
 	</section>
 </template>
