@@ -69,6 +69,35 @@
 		}
 	}
 
+	.profile {
+		margin: 30px 20px;
+
+		.avatar {
+			@size: 80px;
+
+			width: @size;
+			height: @size;
+			position: relative;
+			background: url('/avatar.jpg');
+			background-size: cover;
+			border-radius: 100px;
+
+			&:after {
+				@size: 88px;
+
+				content: '';
+				display: block;
+				position: absolute;
+				top: -6px;
+				left: -6px;
+				width: @size;
+				height: @size;
+				border-radius: 150px;
+				border: 2px solid @red;
+			}
+		}
+	}
+
 	.items {
 		width: @menuMaxWidth;
 		position: fixed;
@@ -83,6 +112,7 @@
 
 		ul {
 			margin-top: 10px;
+			margin-left: 5px;
 		}
 
 		a {
@@ -92,6 +122,11 @@
 			font-weight: 300;
 			padding: 10px 20px;
 			display: block;
+			transition: all .3s;
+
+			&:hover {
+				color: @white;
+			}
 		}
 	}
 
