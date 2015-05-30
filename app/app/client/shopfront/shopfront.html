@@ -26,7 +26,7 @@
 						<img src="{{ImageUrl}}" />
 						<div class="name">{{Name}}</div>
 						<form class="prices clearfix">
-							<button type="submit" class="green" data-id="{{Id}}" data-name="{{Name}}" data-description="{{Description}}" data-price="{{PriceInCents}}" data-carbonprice="{{CarbonNeutralPrice}}">
+							<button type="submit" class="green" data-id="{{Id}}" data-name="{{Name}}" data-description="{{Description}}" data-price="{{PriceInCents}}" data-carbonprice="{{CarbonNeutralPrice}}" data-green="true">
 								${{dollarify CarbonNeutralPriceInCents}}
 								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 2.8 5.2" enable-background="new 0 0 2.8 5.2" xml:space="preserve"><g><path fill="#FF1D25" d="M0,0.5V0l2.5,2.3l0.3,0.3L2.5,2.9L0,5.2V4.7l2.2-2.1L0,0.5z"/></g></svg>
 							</button>
@@ -53,11 +53,11 @@
 					<h1>{{Name}}</h1>
 					<div class="description">{{Description}}</div>
 					<form class="buy-buttons">
-						<button type="submit" data-id="{{Id}}">
+						<button type="submit" data-id="{{Id}}" data-green="false">
 							${{dollarify PriceInCents}} I don't want to carbon offset
 							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 2.8 5.2" enable-background="new 0 0 2.8 5.2" xml:space="preserve"><g><path fill="#FF1D25" d="M0,0.5V0l2.5,2.3l0.3,0.3L2.5,2.9L0,5.2V4.7l2.2-2.1L0,0.5z"/></g></svg>
 						</button>
-						<button type="submit" class="red" data-id="{{Id}}">
+						<button type="submit" class="red" data-id="{{Id}}" data-green="true">
 							${{dollarify CarbonNeutralPriceInCents}} Buy now
 							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 2.8 5.2" enable-background="new 0 0 2.8 5.2" xml:space="preserve"><g><path fill="#FFFFFF" d="M0,0.5V0l2.5,2.3l0.3,0.3L2.5,2.9L0,5.2V4.7l2.2-2.1L0,0.5z"/></g></svg>
 						</button>

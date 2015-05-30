@@ -23,11 +23,15 @@ Shop.fetchProducts = function () {
 Shop.buyProduct = function (productId, isGreen) {
 	console.log(productId, isGreen);
 	var self = this;
-	HTTP.post('http://qantas.apphb.com/api/user/buy?UserId=' +
-							User.id + "&ProductId=" + productId +
-							"&IsCarbonNeutral=" + isGreen, function(err, res) {
-								console.log('success');
-							} );
+	HTTP.post('http://qantas.apphb.com/api/user/buy', {
+		data: {
+			UserId: User.getId(),
+			ProductId: productId,
+			IsCarbonNeutral: isGreen
+		}
+	}, function (error, result) {
+		console.log(result);
+	});
 }
 
 Shop.fetchPending = function () {
