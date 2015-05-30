@@ -31,18 +31,9 @@ Shop.buyProduct = function (productId, isGreen) {
 }
 
 Shop.fetchPending = function () {
-	this.pendingOrders = [
-		{
-			Id: 808,
-			Name: 'Coke',
-			OrderStatus: 1
-		},
-		{
-			Id: 812,
-			Name: 'Wine',
-			OrderStatus: 0
-		}
-	];
+	HTTP.get('http://qantas.apphb.com/api/user/PendingOrders/' + User.id, function(err, res){
+		Session.set('pending', res);
+	});
 }
 
 Shop.getPending = function () {
