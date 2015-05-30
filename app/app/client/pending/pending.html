@@ -7,5 +7,9 @@
 				<div class="status">{{OrderStatus}}</div>
 			</div>
 		{{/each}}
+
+		{{#if noPendingOrders}}
+			<div class="no-orders">You don't have any orders yet.</div>
+		{{/if}}
 	</section>
 </template>

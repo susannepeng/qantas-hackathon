@@ -25,6 +25,22 @@ var buyProduct = function (e) {
 	}, 3000);
 }
 
+var buySelectedProduct = function (e) {
+	if (!!alertTimeout) {
+		Meteor.clearTimeout(alertTimeout);
+		alertTimeout = null;
+	}
+
+	var selectedProduct = Session.get('selectedProduct');
+	var isGreen = $(e.target).data('green');
+	Shop.buyProduct(selectedProduct.Id, isGreen);
+
+	$('#buy-result-alert').addClass('show');
+	alertTimeout = Meteor.setTimeout(function () {
+		$('#buy-result-alert').removeClass('show');
+	}, 3000);
+}
+
 var selectProduct = function (e) {
 	if ($(e.target).is('button')) return;
 	var product = $(e.target).hasClass('.item') ? $(e.target) : $(e.target).closest('.item');
@@ -87,7 +103,10 @@ Template.shopfront.helpers({
 Template.shopfront.events({
 	'submit form': preventDefault,
 	'click .item': selectProduct,
-	'click button': buyProduct,
+	'click .prices button': buyProduct,
 	'click #product-info-box .shade': clearSelectedProduct,
-	'click .buy-buttons button': clearSelectedProduct
+	'click .buy-buttons button': function (e) {
+		buySelectedProduct(e);
+		clearSelectedProduct();
+	}
 });
